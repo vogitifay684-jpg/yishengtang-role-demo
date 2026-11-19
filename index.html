@@ -1,15 +1,6 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f7f6ef">
-<meta name="description" content="从总部决策到门店接待，点选八个岗位，亲手走一遍彝生堂的门店工作。合成数据演示。">
-<meta property="og:title" content="彝生堂 · 门店岗位体验"><meta property="og:description" content="选一个岗位，看职责，试一次操作。八种身份免登录体验。">
-<title>彝生堂 · 门店岗位体验</title>
-<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css">
-</head><body>
-<header class="mast"><div class="mast-inner"><a class="brand" href="#/" aria-label="彝生堂，返回岗位入口"><img alt="彝生堂" src="./wordmark.png"></a><span class="mast-section">门店岗位体验</span><span class="sample">合成演示</span></div></header>
-<main id="app"></main><noscript>请在支持 JavaScript 的手机浏览器或微信中打开岗位体验。</noscript>
-<div id="notice" role="status" aria-live="polite"></div>
-<script src="./roles.js"></script><script src="./tour.js"></script>
-</body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f5ee"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow"><title>彝生堂 · 全部岗位工作台</title><meta name="description" content="打开十个岗位的工作台，用同一笔合成业务体验顾客、门店和总部怎样协作。"><link rel="stylesheet" href="./lobby.css?v=2"></head>
+<body><header><div class="mast"><b>彝生堂</b><span>门店服务系统</span></div><a href="./qr.png">分享二维码</a></header><main>
+<section class="intro"><h1>选择你的岗位</h1><p>看各岗位的实际界面，或进入工作台亲手操作。使用合成数据，切换岗位可以接着办理同一笔业务。</p></section>
+<nav aria-label="按工作找岗位"><a href="#store">门店服务</a><a href="#business">品牌经营</a><a href="#support">支持与维护</a></nav>
+<div id="directory"></div><noscript>请在浏览器中启用 JavaScript 以显示岗位列表。</noscript></main>
+<dialog id="viewer"><div class="viewer-bar"><h2 id="image-title"></h2><button id="close" aria-label="关闭界面预览">关闭</button></div><img id="large" alt=""></dialog><dialog id="launch"><div class="viewer-bar"><h2>进入工作台</h2><button id="dismiss">关闭</button></div><p id="notice" role="status">正在连接合成门店…</p><button hidden id="retry">重新连接</button></dialog><script src="./lobby.js?v=2"></script></body></html>
