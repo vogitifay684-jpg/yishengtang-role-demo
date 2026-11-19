@@ -14,13 +14,14 @@ const groups=[
  ['maintenance','维护负责人','查看运行状态、异常和修复交接记录。','维护状态']]}];
 const $=s=>document.querySelector(s),roles=groups.flatMap(g=>g.roles),ids=new Set(roles.map(r=>r[0]));
 function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;}
-function preview(id,title,detail){const path='./screens/'+id+(detail?'-action':'')+'.webp';$('#image-title').textContent=title;$('#large').src=path;$('#large').alt=title+'实际界面';$('#viewer').showModal();}
+function preview(id,title,detail){const path='./screens/'+id+(detail==='web'?'-web':detail?'-action':'')+'.webp';$('#viewer').classList.toggle('wide',detail==='web');$('#image-title').textContent=title;$('#large').src=path;$('#large').alt=title+'实际界面';$('#viewer').showModal();}
 const showRole=r=>{
  const [id,title,desc,second]=r,article=el('article','role'),body=el('div'),actions=el('div','buttons');article.id='role-'+id;
  const open=el('button','open','进入工作台'),secondary=el('button','secondary','看'+second),thumb=el('button','thumb'),image=el('img');
  open.onclick=()=>enter(id);secondary.onclick=()=>preview(id,title+' · '+second,true);thumb.onclick=()=>preview(id,title+' · 首页',false);thumb.setAttribute('aria-label','放大'+title+'首页');image.src='./screens/'+id+'.webp';image.alt=title+'首页';image.loading='lazy';thumb.append(image);
- actions.append(open,secondary);body.append(el('h3','',title),el('p','',desc),actions);article.append(body,thumb);return article;
+ const web=el('button','secondary','看网页端');web.onclick=()=>preview(id,title+' · 网页端','web');actions.append(open,secondary,web);body.append(el('h3','',title),el('p','',desc),actions);article.append(body,thumb);return article;
 };
+for(const id of ['founder','franchise','manager','technician','customer','receptionist','trainer','finance','prospect','maintenance']){const r=roles.find(r=>r[0]===id),b=el('button','quick-role',r[1]);b.onclick=()=>enter(id);$('#quick').append(b);}
 for(const group of groups){const section=el('section','group'),list=el('div','list');section.id=group.id;section.append(el('h2','',group.title));group.roles.forEach(r=>list.append(showRole(r)));section.append(list);$('#directory').append(section);}
 $('#close').onclick=()=>$('#viewer').close();$('#dismiss').onclick=()=>$('#launch').close();
 let attempt=0;$('#launch').addEventListener('close',()=>attempt++);
